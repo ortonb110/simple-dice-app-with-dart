@@ -15,6 +15,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int leftDiceNumber = 1;
   int rightDiceNumber = 1;
+
+  //Method for changing the dice images.
+  void changeDice() {
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,18 +38,14 @@ class _MyAppState extends State<MyApp> {
                 Expanded(
                   child: TextButton(
                       onPressed: () {
-                        setState(() {
-                          leftDiceNumber = Random().nextInt(6) + 1;
-                        });
+                        changeDice();
                       },
                       child: Image.asset('images/dice$leftDiceNumber.png')),
                 ),
                 Expanded(
                   child: TextButton(
                       onPressed: () {
-                        setState(() {
-                          rightDiceNumber = Random().nextInt(6) + 1;
-                        });
+                        changeDice();
                       },
                       child: Image.asset('images/dice$rightDiceNumber.png')),
                 ),
